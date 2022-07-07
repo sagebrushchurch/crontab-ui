@@ -1,0 +1,38 @@
+name: dev-server-push
+on:
+  push:
+      branches:
+        - dev
+jobs:
+  dev-server-push:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@5.1
+      with:
+        switches: -avzr --delete --exclude=vars.env --exclude=api/__pycache__ --exclude=frontend/node_modules --exclude=frontend/.next
+        remote_path: /mnt/disks/storage/git-dev/${{ github.event.repository.name }}/
+        remote_host: ${{ secrets.SSH_HOST }}
+        remote_user: ${{ secrets.SSH_USER }}
+        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v18.2
+    - name: if file changed
+      if: |
+        contains(steps.changed-files.outputs.modified_files, 'docker-compose-dev.yml') || 
+        contains(steps.changed-files.outputs.modified_files, 'package.json') || 
+        contains(steps.changed-files.outputs.modified_files, 'requirements.txt') ||
+        contains(steps.changed-files.outputs.modified_files, 'defaultdev.conf')
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd /mnt/disks/storage/git-dev/${{ github.event.repository.name }}
+          docker-compose -f docker-compose-dev.yml down
+          docker-compose -f docker-compose-dev.yml build
+          docker-compose -f docker-compose-dev.yml up -d
