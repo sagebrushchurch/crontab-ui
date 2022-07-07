@@ -40,8 +40,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: frontend # TODO change for each project
-          file: frontend/dockerfile # TODO change for each project
+          context: . # TODO change for each project
+          file: Dockerfile # TODO change for each project
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  crontab-ui:
+    build: .
+    ports:
+      - 3072:8000
