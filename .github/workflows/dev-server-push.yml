@@ -5,7 +5,7 @@ on:
         - dev
 jobs:
   dev-server-push:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: rsync deployments
