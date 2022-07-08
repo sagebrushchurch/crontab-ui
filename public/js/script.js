@@ -80,10 +80,10 @@ function uploadScript(){
 	console.log('test upload button')
 	var input = document.createElement('input');
 	input.type = 'file';
-	var file;
+	var script;
 	input.onchange = e => { 
-		file = e.target.files[0];
-		$.post(routes.uploadFile, {file: 'test'}, function(){
+		script = e.target.files[0];
+		$.post(routes.uploadFile, {file: script}, function(){
 			console.log('sent')
 		});
 	}
