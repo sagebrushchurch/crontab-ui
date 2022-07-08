@@ -16,7 +16,8 @@ RUN   apk --no-cache add \
       nodejs \
       npm \
       supervisor \
-      tzdata
+      tzdata \
+      py3-pip
 
 COPY supervisord.conf /etc/supervisord.conf
 COPY . /crontab-ui
