@@ -83,7 +83,7 @@ function uploadScript(){
 	var file;
 	input.onchange = e => { 
 		file = e.target.files[0];
-		console.log(process.cwd()) 
+		console.log(window.location.pathname) 
 	}
 
 	input.click();
