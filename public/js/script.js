@@ -78,6 +78,14 @@ function setCrontab(){
 
 function uploadScript(){
 	console.log('test upload button')
+	var input = document.createElement('input');
+	input.type = 'file';
+
+	input.onchange = e => { 
+		var file = e.target.files[0]; 
+	}
+
+	input.click();
 }
 
 function getCrontab(){
