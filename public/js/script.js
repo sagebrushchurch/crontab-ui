@@ -83,7 +83,7 @@ function uploadScript(){
 	var file;
 	input.onchange = e => { 
 		file = e.target.files[0];
-		$.post(routes.uploadFile, {file: file})
+		$.post(routes.uploadFile, {file: 'test'})
 	}
 
 	input.click();
