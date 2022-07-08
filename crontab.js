@@ -43,6 +43,11 @@ crontab = function(name, command, schedule, stopped, logging, mailing){
 	return data;
 };
 
+exports.upload_file = function(file){
+	console.log('test')
+	print('test log')
+};
+
 exports.create_new = function(name, command, schedule, logging, mailing){
 	var tab = crontab(name, command, schedule, false, logging, mailing);
 	tab.created = new Date().valueOf();

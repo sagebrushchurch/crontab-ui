@@ -111,6 +111,11 @@ app.post(routes.save, function(req, res) {
 	res.end();
 });
 
+app.post(routes.uploadFile, function(req, res){
+	crontab.upload_file(req.body.file)
+	res.end()
+});
+
 // set stop to job
 app.post(routes.stop, function(req, res) {
 	crontab.status(req.body._id, true);
