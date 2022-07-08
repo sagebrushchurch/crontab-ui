@@ -112,6 +112,7 @@ app.post(routes.save, function(req, res) {
 });
 
 app.post(routes.uploadFile, function(req, res){
+	console.log('here')
 	crontab.upload_file(req.body.file)
 	res.end()
 });
