@@ -78,6 +78,8 @@ function setCrontab(){
 
 function uploadScript(){
 	console.log('test upload button')
+	$('#upload_file').click();
+	/*
 	var input = document.createElement('input');
 	input.type = 'file';
 	var script;
@@ -89,6 +91,7 @@ function uploadScript(){
 	}
 
 	input.click();
+	*/
 }
 
 function getCrontab(){
