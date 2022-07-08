@@ -80,12 +80,13 @@ function uploadScript(){
 	console.log('test upload button')
 	var input = document.createElement('input');
 	input.type = 'file';
-
+	var file;
 	input.onchange = e => { 
-		var file = e.target.files[0]; 
+		file = e.target.files[0]; 
 	}
 
 	input.click();
+	console.log(file)
 }
 
 function getCrontab(){
