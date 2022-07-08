@@ -82,11 +82,11 @@ function uploadScript(){
 	input.type = 'file';
 	var file;
 	input.onchange = e => { 
-		file = e.target.files[0]; 
+		file = e.target.files[0];
+		console.log(file) 
 	}
 
 	input.click();
-	console.log(file)
 }
 
 function getCrontab(){
