@@ -113,10 +113,10 @@ app.post(routes.save, function(req, res) {
 
 app.post(routes.uploadFile, function(req, res){
 	console.log('here')
-	var fstream;
 	req.pipe(req.busboy);
 	req.busboy.on('file', function (fieldname, file, filename) {
-		crontab.upload_file(file)
+		fstream = fs.createWriteStream(path.join(crontab.script_folder, filename))
+		file.pipe(fstream)
 		fstream.on('close', function () {
 			res.redirect(routes.root);
 		});
