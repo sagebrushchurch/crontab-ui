@@ -7,6 +7,8 @@ RUN   mkdir /crontab-ui; touch $CRON_PATH/root; chmod +x $CRON_PATH/root
 
 WORKDIR /crontab-ui
 
+RUN mkdir scripts
+
 LABEL maintainer "@alseambusher"
 LABEL description "Crontab-UI docker"
 
