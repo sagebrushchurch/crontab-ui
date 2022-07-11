@@ -21,6 +21,7 @@ var routes = {
 	"import_crontab": "/import_crontab", // this is from existing crontab
 	"logger": "/logger",
 	"stdout": "/stdout",
+	"uploadFile": "/uploadFile",
 };
 
 exports.routes = Object.keys(routes).reduce((p, c) => ({...p, [c]: base_url + routes[c]}), {});

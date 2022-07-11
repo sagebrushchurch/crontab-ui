@@ -76,6 +76,24 @@ function setCrontab(){
 	});
 }
 
+function uploadScript(){
+	console.log('test upload button')
+	$('#upload_file').click();
+	/*
+	var input = document.createElement('input');
+	input.type = 'file';
+	var script;
+	input.onchange = e => { 
+		script = e.target.files[0];
+		$.post(routes.uploadFile, {file: script}, function(){
+			console.log('sent')
+		});
+	}
+
+	input.click();
+	*/
+}
+
 function getCrontab(){
 	messageBox("<p> Do you want to get the crontab file? <br /> <b style='color:red'>NOTE: It is recommended to take a backup before this.</b> And refresh the page after this.</p>", "Confirm crontab retrieval", null, null, function(){
 		$.get(routes.import_crontab, { "env_vars": $("#env_vars").val() }, function(){

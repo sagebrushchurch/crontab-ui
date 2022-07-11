@@ -111,6 +111,18 @@ app.post(routes.save, function(req, res) {
 	res.end();
 });
 
+app.post(routes.uploadFile, function(req, res){
+	console.log('here')
+	req.pipe(req.busboy);
+	req.busboy.on('file', function (fieldname, file, filename) {
+		fstream = fs.createWriteStream(path.join(crontab.script_folder, filename))
+		file.pipe(fstream)
+		fstream.on('close', function () {
+			res.redirect(routes.root);
+		});
+	});
+});
+
 // set stop to job
 app.post(routes.stop, function(req, res) {
 	crontab.status(req.body._id, true);

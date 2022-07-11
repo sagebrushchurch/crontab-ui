@@ -9,6 +9,9 @@ exports.log_folder = path.join(exports.db_folder, 'logs');
 exports.env_file =  path.join(exports.db_folder, 'env.db');
 exports.crontab_db_file = path.join(exports.db_folder, 'crontab.db');
 
+exports.script_folder = process.env.CRON_SCRIPTS_PATH === undefined ? path.join(__dirname, "scripts") : process.env.CRON_SCRIPTS_PATH;
+
+
 var db = new Datastore({ filename: exports.crontab_db_file});
 var cronPath = "/tmp";
 if(process.env.CRON_PATH !== undefined) {
